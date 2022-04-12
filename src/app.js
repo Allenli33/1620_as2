@@ -18,6 +18,10 @@ const CancelBtn = document.createElement('button')
 CancelBtn.innerHTML = 'Cancel'
 CancelBtn.id = 'cancel-button';
 
+const CancelReadBtn = document.createElement('button')
+CancelReadBtn.innerHTML = 'Close'
+CancelReadBtn.id = 'cancel-read-button';
+
 
 
 // Create note taking area
@@ -76,3 +80,18 @@ function SaveNotes() {
 	CancelText()
 }
 SaveBtn.addEventListener('click', SaveNotes)
+
+// Create Read Note
+const ReadNoteArea = document.querySelector('.read-note-area')
+function ReadNote() {
+	if (document.getElementById("new-note")) {
+		CancelText()
+	}
+	ReadNoteArea.innerHTML = '<div id="read-note"><h1>'+notes[this.id].title+'</h1><p>'+notes[this.id].noteBody+'<br></p></div>';
+	ReadNoteArea.appendChild(CancelReadBtn)
+	CancelReadBtn.addEventListener('click', CancelReadNote)
+}
+
+function CancelReadNote() {
+	ReadNoteArea.innerHTML='';
+}
