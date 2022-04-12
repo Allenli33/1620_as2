@@ -9,6 +9,7 @@ const notes = [
 
 
 //save and cancel button
+
 const SaveBtn = document.createElement('button')
 SaveBtn.innerHTML = 'Save'
 SaveBtn.id = 'save-button';
@@ -70,7 +71,8 @@ function SaveNotes() {
 		title: title, 
 		noteBody: para,
 		id: notes.length + 1 
-	})	
+	})
+  // Display notes
 	let li = document.createElement("li");
 	li.appendChild(document.createTextNode(title));
 	li.setAttribute("id", notes.length-1);
@@ -95,3 +97,10 @@ function ReadNote() {
 function CancelReadNote() {
 	ReadNoteArea.innerHTML='';
 }
+
+//dark theme
+const checkbox = document.querySelector('.theme-toggle input')
+checkbox.addEventListener('change', function(){
+	document.querySelector(".main-container").classList.toggle('dark-theme');
+	document.querySelector(".main-container").classList.toggle('light-theme');
+})
